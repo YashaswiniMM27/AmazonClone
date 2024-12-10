@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Menu</title>
+</head>
+<body>
+    <p>Food Menu</p>
+    <button onclick="cartvalue += 5; console.log('Coffee added');">Coffee</button>
+    <button onclick="cartvalue += 3; console.log('Bagel added');">Bagel</button>
+    <button onclick="cartvalue += 9; console.log('Soup added');">Soup</button><br><br>
+    <button onclick="cartvalue = 0; console.log('Your cart has been reset');">Reset</button>
+    <button onclick="tax = (cartvalue * 18)/100; total = cartvalue + tax; console.log(`Cart value: $${cartvalue}`); console.log(`Tax : $${tax}`); console.log(`Your total is : $${total}`);">Total</button>
+
+    <script>
+        let cartvalue = 0;
+    </script>
+</body>
+</html>
