@@ -1,18 +1,27 @@
 const display = document.getElementById("display");
 
-function appendToDisplay(input){
+const lastCalculation = localStorage.getItem('Calculation');
+if (lastCalculation) {
+    display.value = JSON.parse(lastCalculation);
+}
+
+function appendToDisplay(input) {
     display.value += input;
 }
 
-function clearDisplay(){
+function clearDisplay() {
     display.value = '';
+    localStorage.removeItem('Calculation');
 }
 
-function calculate(){
-    try{
-        display.value = eval(display.value);
+function calculate() {
+    try {
+        const calculation = eval(display.value);
+        display.value = calculation;
+        localStorage.setItem('Calculation', JSON.stringify(calculation));
     }
-    catch{
+    catch {
         display.value = "Error";
     }
 }
+

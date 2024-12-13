@@ -11,8 +11,12 @@
     <button onclick="playGame('Rock')">Rock</button>
     <button onclick="playGame('Paper')">Paper</button>
     <button onclick="playGame('Scissors')">Scissors</button>
+    <button onclick="score.wins = 0; score.losses = 0; score.ties = 0; alert('Your score has been reset!')">Reset Score</button>
 
     <script>
+
+        const score = JSON.parse(localStorage.getItem('score'));
+
         function playGame(playerMove) {
             const randomNumber = Math.random();
             let computerMove = '';
@@ -38,7 +42,19 @@
                 result = 'You lose.';
             }
 
-            alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}`);
+            if(result === 'You win.'){
+                score.wins++;
+            }
+            else if(result === 'You lose.'){
+                score.losses++;
+            }
+            else if (result === 'Tie.'){
+                score.ties++
+            }
+
+            localStorage.setItem('score', JSON.stringify(score));
+
+            alert(`You picked ${playerMove}. Computer picked ${computerMove}. ${result}\nWins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
         }
     </script>
 
