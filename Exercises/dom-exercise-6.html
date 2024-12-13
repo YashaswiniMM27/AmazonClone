@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+</head>
+<body>
+    <p style="font-weight: bold;">Yotube subscribe</p>
+    <button class="subscribe" onclick="subscribeButton()">Subscribe</button><br><br><br>
+
+    <p style="font-weight: bold;">Amazon shipping calculator</p>
+    <p>Orders under $40 = +$10 shipping</p>
+    <p>Orders over $40 = Free shipping</p>
+    <input onkeydown="keyDownEnterEvent()" class="js-calculate" placeholder="Cost of order">
+    <button onclick="amazonShippingCalculator()">Calculate</button><br><br>
+    <p class="js-cost"></p>
+
+
+    <script>
+        function subscribeButton(){
+            const subscribe = document.querySelector('.subscribe');
+
+            if(subscribe.innerText === 'Subscribed'){
+                subscribe.innerHTML = 'Subscribe';
+            } else{
+                subscribe.innerHTML = 'Subscribed';
+            }
+        }
+
+        function keyDownEnterEvent(){
+            if(event.key === 'Enter')
+            {
+                amazonShippingCalculator();
+            }
+        }
+
+        function amazonShippingCalculator(){
+            const calculate = document.querySelector('.js-calculate');
+            let cost = parseFloat(calculate.value);
+
+            if(cost <= 40){
+                cost = cost + 10;
+            }
+
+            document.querySelector('.js-cost').innerHTML = `$${cost}`;
+        }
+    </script>
+</body>
+</html>
