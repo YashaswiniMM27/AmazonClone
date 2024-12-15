@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="/Projects/Rock-Paper-Scissors/RPSStyle.css">
 </head>
 <body>
-    <p>Rock Paper Scissors</p>
-    <button onclick="playGame('Rock')">Rock</button>
-    <button onclick="playGame('Paper')">Paper</button>
-    <button onclick="playGame('Scissors')">Scissors</button>
+    <p class="header">Rock Paper Scissors</p>
+    <button onclick="playGame('Rock')"><img class="buttonIcon" src="/Images/rock-emoji.png" alt="Rock"></button>
+    <button onclick="playGame('Paper')"><img class="buttonIcon" src="/Images/paper-emoji.png" alt="Paper"></button>
+    <button onclick="playGame('Scissors')"><img class="buttonIcon" src="/Images/scissors-emoji.png" alt="Scissors"></button>
     <p class="js-result"></p>
     <p class="js-moves"></p>
     <p class="js-score"></p>
-    <button onclick="score.wins = 0; score.losses = 0; score.ties = 0; localStorage.removeItem('score'); updateScore();">Reset Score</button>
+    <button class="resetScoreBtn" onclick="resetScore();">Reset Score</button>
 </body>
 <script src="/Projects/Rock-Paper-Scissors/RPS-Js.js"></script>
 </html>
