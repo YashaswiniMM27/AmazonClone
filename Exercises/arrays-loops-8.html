@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //Example 1
+        const myArray1 = [10, 20, 30];
+        myArray1.splice(2, 1, 99);
+        console.log(myArray1);
+
+        //Example 2
+        function getLastValue(myArray2){
+            const lastIndex = myArray2.length - 1;
+            return myArray2[lastIndex];
+        }
+        console.log(getLastValue([1,2,3,4,5]));
+        console.log(getLastValue(['hi', 'hello', 'good']));
+
+        //Example 3
+        function arraySwap(myArray3){
+            const lastIndex = myArray3.length - 1;
+            let lastValue = myArray3[lastIndex];
+            let firstValue = myArray3[0];
+
+            myArray3[0] = lastValue;
+            myArray3[lastIndex] = firstValue;
+
+            return myArray3;
+        }
+        console.log(arraySwap([1,2,3,4,5]));
+
+        //Example 4
+        function countArrayBy2(){
+            for(i=0; i<=10; i+=2){
+                console.log(i);
+            }
+        }
+        countArrayBy2();
+
+        //Example 5
+        function countArrayBy5To0(){
+            for(i=5; i>=0; i--){
+                console.log(i);
+            }
+        }
+        countArrayBy5To0();
+
+        //Example 6
+        function arrayIncreasedBy1(){
+            const myArray4 = [1,2,3];
+            const result = [];
+
+            for(i = 0; i < myArray4.length; i++){
+                result.push(myArray4[i]+1);
+            }
+
+            console.log(result);
+        }
+        arrayIncreasedBy1();
+
+        //Example 7
+        function addNum(array, num){
+            const result = [];
+
+            for(let i = 0; i < array.length; i++){
+                result.push(array[i]+num);
+            }
+
+            return result;
+        }
+        console.log(addNum([1,2,3], 2))
+        console.log(addNum([1,2,3], 3))
+
+        //Example 8
+        function addArrays(array1, array2){
+            const result = [];
+
+            for (let i = 0; i<array1.length; i++){
+                result.push(array1[i] + array2[i]);
+            }
+
+            return result;
+        }
+        console.log(addArrays([1,2,3], [1,2,3]))
+
+        //Example 9
+        function countPositive(nums){
+            let result = 0;
+
+            for(let i = 0; i < nums.length; i++){
+                if(nums[i]>0){
+                    result++;
+                }
+            }
+
+            return result;
+        }
+        console.log(countPositive([1,-3,5]));
+        console.log(countPositive([-1,-3,-5]));
+        console.log(countPositive([1,3,5]));
+
+        //Example 10
+        function minMax(nums){
+            let result = {min:  null, max: null};
+
+            for(let i = 0; i < nums.length; i++){
+                const value = nums[i];
+
+                if (result.min === null || value < result.min) {
+                    result.min = value;
+                }
+
+                if(value > result.max || result.max === null){
+                    result.max = value;
+                }
+            }
+
+            return result
+        }
+
+        console.log(minMax([1,-3,5]));
+        console.log(minMax([3]));
+        console.log(minMax([]));
+
+        //Example 11
+        function countWords(words){
+
+        }
+        console.log(countWords(['apple', 'orange', 'apple', 'grape', 'grape', 'apple']));
+    </script>
+</body>
+</html>
