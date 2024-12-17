@@ -129,9 +129,92 @@
 
         //Example 11
         function countWords(words){
+            const result = {};
 
+            for(let i = 0; i < words.length; i++){
+                const word = words[i];
+
+                if(!result[word]){
+                    result[word] = 1;
+                }
+                else{
+                    result[word]++ ;
+                }
+            }
+            return result;
         }
-        console.log(countWords(['apple', 'orange', 'apple', 'grape', 'grape', 'apple']));
+        console.log(countWords(['grapes', 'apple', 'orange', 'apple', 'orange', 'grapes', 'grapes']));
+
+        //Example 12
+        function searchString(words){
+            let index = -1;
+
+            for(i = 0; i < words.length; i++){
+                if(words[i] === 'search'){
+                    index = i;
+                    break;
+                }
+            }
+
+            console.log(index);
+        }
+
+        searchString(['banana','search','fan', 'search']);
+        searchString(['banana','fan']);
+
+        //Example 13
+        function findIndex(array, word){
+            let index = -1;
+
+            for(i = 0; i < array.length; i++){
+                if(array[i] === word){
+                    index = i;
+                    break;
+                }
+            }
+
+            console.log(index);
+        }
+
+        findIndex(['red', 'blue', 'yellow', 'blue', 'red'], 'yellow');
+
+        //Example 14
+        function removeEggs(food){
+            for(i = 0; i <= food.length; i++){
+                if(food[i] === 'egg'){
+                    food.splice(i, 1);
+                    i--;
+                }
+            }
+            console.log(food);
+        }
+        removeEggs(['egg', 'egg', 'apple', 'egg', 'bread', 'ham', 'egg']);
+
+        //Example 15 FizzBuzz
+        function fizzBuzz(){
+
+            const result = [];
+
+            for (let i = 1; i <= 20; i++){
+                let value = '';
+
+                if(i % 3 === 0 && i % 5 ===0){
+                    value += 'FizzBuzz';
+                }
+                else if(i % 3 === 0){
+                    value += 'Fizz';
+                }
+                else if(i % 5 === 0){
+                    value += 'Buzz';
+                }
+                else if (value === ''){
+                    value = i;
+                }
+                result.push(value);
+            }
+            return result
+        }
+        console.log(fizzBuzz());
     </script>
 </body>
 </html>

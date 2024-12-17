@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/Projects/To-Do-List/todo-List-Style.css">
+</head>
+<body>
+    <p>To-do List</p>
+    <div class="inputAndBtnContainer">
+        <input class="js-input" onkeydown="keyDownEnterEvent()" type="text" placeholder="Tasks to do">
+        <input class="js-datePicker" type="date">
+        <button class="addBtn" onclick="addTodo()">Add</button>
+        <p class="js-error" style="color: rgb(223, 0, 0); font-size: 14px;"></p>
+    </div>
+    <div class="js-listTodo"></div>
+    <script src="/Projects/To-Do-List/todo-List.js"></script>
+</body>
+</html>

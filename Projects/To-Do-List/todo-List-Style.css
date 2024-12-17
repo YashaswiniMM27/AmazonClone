@@ -1,0 +1,38 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+input{
+    height: 25px;
+    width: 160px;
+    padding: 5px;
+}
+
+.addBtn{
+    height: 40px;
+    width: 100px;
+    border: none;
+    color: white;
+    background-color: rgb(0, 107, 0);
+    font-weight: bold;
+}
+
+.deleteBTN{
+    height: 40px;
+    width: 100px;
+    border: none;
+    color: white;
+    background-color: rgb(149, 0, 0);
+    font-weight: bold;
+}
+
+.js-listTodo{
+    display: grid;
+    grid-template-columns: 170px 178px 100px;
+    gap: 5px;
+    margin-top: 20px;
+    align-items: center;
+    
+}
+
