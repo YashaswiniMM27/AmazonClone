@@ -215,6 +215,22 @@
             return result
         }
         console.log(fizzBuzz());
+        
+        //Example 16
+        function uniqueString(array){
+
+            for(let i = 0; i < array.length; i++){
+
+                let currentString = array[i];
+                if(array.indexOf(currentString) < i){
+                    array.splice(i, 1);
+                    i--;
+                }
+            }
+            console.log(array);
+        }
+        uniqueString(['apple', 'banana', 'grape', 'banana', 'apple', 'orange', 'banana']);
+
     </script>
 </body>
 </html>
