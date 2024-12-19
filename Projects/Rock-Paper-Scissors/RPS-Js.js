@@ -20,19 +20,36 @@ function updateMoves(playerMove, computerMove) {
     }
 }
 
-function playGame(playerMove) {
+function autoPlay() {
+    playerMove = giveMeAMove();
+    playGame(playerMove);
+}
+
+function giveMeAMove() {
     const randomNumber = Math.random();
-    let computerMove = '';
-    let result = '';
-
-    if (randomNumber < 1 / 3) {
-        computerMove = 'Rock';
-    } else if (randomNumber < 2 / 3) {
-        computerMove = 'Paper';
-    } else {
-        computerMove = 'Scissors';
+    let playerMove = null;
+    if (randomNumber < 1 / 6 || randomNumber < 4 / 6) {
+        playerMove = 'Rock';
+    } else if (randomNumber < 2 / 6 || randomNumber < 5 / 6 ) {
+        playerMove = 'Paper';
+    } else if(randomNumber < 3 / 6 || randomNumber < 1 ){
+        playerMove = 'Scissors';
     }
+    return playerMove;
+}
 
+var autoPlayIterations;
+function executeAutoPlay(){
+    autoPlayIterations = setInterval(autoPlay, 2000);
+}
+
+function stopAutoPlay(){
+    clearInterval(autoPlayIterations);
+    setTimeout(resetScore, 2000);
+}
+
+function playGame(playerMove) {
+    computerMove = giveMeAMove();
     if (playerMove === computerMove) {
         result = 'Tie.';
         score.ties++;
@@ -47,7 +64,6 @@ function playGame(playerMove) {
         result = 'You lose.';
         score.losses++;
     }
-
     localStorage.setItem('score', JSON.stringify(score));
 
     updateResult(result);
@@ -61,6 +77,7 @@ function resetScore() {
     score.ties = 0;
 
     localStorage.removeItem('score');
+
 
     updateScore();
     updateResult('');

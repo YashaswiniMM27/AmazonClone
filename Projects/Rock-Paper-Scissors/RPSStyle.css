@@ -23,7 +23,8 @@ button{
     height: 50px;
 }
 
-.resetScoreBtn{
+.resetScoreBtn,
+.autoPlayBtn{
     margin-top: 10px;
     color: white;
     height: 60px;
