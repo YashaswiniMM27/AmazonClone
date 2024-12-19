@@ -12,19 +12,19 @@ const todoList = initialTodo;
 
         function renderTodoList(){
             let todoHTML = '';
-
-            for(let i = 0; i < todoList.length; i++){
-                const todo = todoList[i];
-                const {name, dueDate} = todo;
-                const html = `<div style="padding-left:5px">• ${name}</div>
-                                <div style="padding-left:5px">${dueDate}</div>
-                                <div>
-                                    <button class="deleteBTN" onclick="deleteTodo(${i})">Delete</button>
-                                </div>`;
-                                
-                todoHTML += html;
-            }
-
+            
+            todoList.forEach((todo, index) => {
+                    const {name, dueDate} = todo;
+                    const html = `<div style="padding-left:5px"> ${name}</div>
+                                    <div style="padding-left:5px">${dueDate}</div>
+                                    <div>
+                                        <button class="deleteBTN" onclick="deleteTodo(${index})">Delete</button>
+                                    </div>`;
+                                    
+                    todoHTML += html;
+                }
+            )
+            
             document.querySelector('.js-listTodo').innerHTML = todoHTML;
         }
 

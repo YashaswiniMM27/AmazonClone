@@ -48,6 +48,18 @@ function stopAutoPlay(){
     setTimeout(resetScore, 2000);
 }
 
+document.body.addEventListener('keydown', (event) => {
+    if(event.key === 'r'){
+        playGame('rock');
+    }
+    else if(event.key === 'p'){
+        playGame('paper');
+    }
+    else if(event.key === 's'){
+        playGame('scissors');
+    }
+});
+
 function playGame(playerMove) {
     computerMove = giveMeAMove();
     if (playerMove === computerMove) {
