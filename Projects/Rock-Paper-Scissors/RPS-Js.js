@@ -16,7 +16,7 @@ function updateMoves(playerMove, computerMove) {
         document.querySelector('.js-moves').innerHTML = '';
     } else {
         document.querySelector('.js-moves').innerHTML = `
-            You picked <img style="height: 40px" src ='/Images/${playerMove}-emoji.png'>. Computer picked <img style="height: 40px" src ='/Images/${computerMove}-emoji.png'>.`;
+            You picked <img style="height: 40px" src ='/Images/Rock-paper-scissors/${playerMove}-emoji.png'>. Computer picked <img style="height: 40px" src ='/Images/Rock-paper-scissors/${computerMove}-emoji.png'>.`;
     }
 }
 
