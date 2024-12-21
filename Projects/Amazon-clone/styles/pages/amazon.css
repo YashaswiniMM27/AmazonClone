@@ -132,8 +132,8 @@
 
 .added-to-cart {
   color: rgb(6, 125, 98);
-  font-size: 16px;
-
+  font-size: 14px;
+  font-weight: 500;
   display: flex;
   align-items: center;
   margin-bottom: 8px;
@@ -142,6 +142,16 @@
      be invisible. Use JavaScript to change the
      opacity and make it visible. */
   opacity: 0;
+}
+
+.addedMessage{
+  color: rgb(6, 125, 98);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  opacity: 1;
 }
 
 .added-to-cart img {
@@ -154,3 +164,4 @@
   padding: 8px;
   border-radius: 50px;
 }
+
