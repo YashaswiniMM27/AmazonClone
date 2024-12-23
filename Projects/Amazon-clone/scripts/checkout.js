@@ -3,6 +3,8 @@ import { products } from "../../../data/products.js";
 import { calculateCartQuantity } from "../../../data/cart.js";
 import { deliveryOptions } from "../../../data/deliveryOptions.js";
 
+function renderOrderSummary(){
+
 let cartHTML = '';
 
 cart.forEach((cartItem) => {
@@ -148,7 +150,6 @@ document.querySelectorAll('.js-save-quantity').forEach((link) => {
 
 function updateCartQuantity(){
     const cartQuantity = calculateCartQuantity();
-    console.log(cartQuantity);
     document.querySelector('.js-checkout-quantity').innerHTML = `${cartQuantity} item${cartQuantity === 1 ? '' : 's'}`;
 }
 updateCartQuantity();
@@ -157,6 +158,11 @@ document.querySelectorAll('.js-delivery-option').forEach((optionElement) => {
     optionElement.addEventListener('click', () => {
         const {productId, deliveryOptionId} = optionElement.dataset;
         updateDeliveryOption(productId, deliveryOptionId);
+        renderOrderSummary();
     });
 })
+
+}
+
+renderOrderSummary();
 
