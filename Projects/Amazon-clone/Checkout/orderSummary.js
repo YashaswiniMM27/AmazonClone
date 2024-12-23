@@ -1,4 +1,4 @@
-import {cart, deleteFromCart, updateDeliveryOption} from "../../../data/cart.js";
+import {cart, deleteFromCart, updateDeliveryOption, saveToLocalStorage} from "../../../data/cart.js";
 import { getProduct } from "../../../data/products.js";
 import { calculateCartQuantity } from "../../../data/cart.js";
 import { deliveryOptions, getDeliveryOption } from "../../../data/deliveryOptions.js";
@@ -46,7 +46,7 @@ cart.forEach((cartItem) => {
                 <span class="update-quantity-link link-primary js-update-quantity-link" data-product-id="${matchingProduct.id}">
                     Update
                 </span>
-                <input class="quantity-input js-quantity-input-${matchingProduct.id}" type="number"  min="0">
+                <input class="quantity-input js-quantity-input-${matchingProduct.id}" type="number"  min="0" placeholder="0">
                 <span class="save-quantity-link link-primary js-save-quantity" data-product-id="${matchingProduct.id}">Save</span>
                 <span class="delete-quantity-link link-primary js-delete-quantity-link" data-product-id="${matchingProduct.id}">
                     Delete
@@ -103,6 +103,7 @@ link.addEventListener('click', () => {
 
     const container = document.querySelector(`.js-cart-item-container-${productId}`);
     container.remove();
+    renderOrderSummary();
     renderPaymentSummary();
 });
 });
@@ -117,16 +118,18 @@ document.querySelectorAll('.js-update-quantity-link').forEach((link) => {
 
 document.querySelectorAll('.js-save-quantity').forEach((link) => {
     link.addEventListener('click', () => {
+
         const productId = link.dataset.productId;
         const quantityInput = document.querySelector(`.js-quantity-input-${productId}`);
-
         const newQuantity = Number(quantityInput.value);
 
-        if (newQuantity < 0 || newQuantity >= 1000) {
-            alert('Quantity must be at least 0 and less than 1000');
-            return;
+        if(newQuantity === 0){
+            deleteFromCart(productId);
         }
+
         updateCartQuantity(productId, newQuantity);
+        renderOrderSummary();
+        renderPaymentSummary();
 
         const container = document.querySelector(
             `.js-cart-item-container-${productId}`
@@ -139,9 +142,16 @@ document.querySelectorAll('.js-save-quantity').forEach((link) => {
     });
 });
 
-function updateCartQuantity(){
-    const cartQuantity = calculateCartQuantity();
-    document.querySelector('.js-checkout-quantity').innerHTML = `${cartQuantity} item${cartQuantity === 1 ? '' : 's'}`;
+function updateCartQuantity(productId, newQuantity) {
+    const cartItem = cart.find((item) => item.productId === productId);
+
+    if (cartItem) {
+        cartItem.quantity = newQuantity;
+    }
+
+    document.querySelector('.js-checkout-quantity').innerHTML = `${calculateCartQuantity()} item${calculateCartQuantity() === 1 ? '' : 's'}`;
+
+    saveToLocalStorage();
 }
 updateCartQuantity();
 

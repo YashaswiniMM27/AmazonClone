@@ -1,5 +1,5 @@
     import { products } from "../../../data/products.js";
-    import { addToCart, calculateCartQuantity } from "../../../data/cart.js";
+    import { addToCart, calculateCartQuantity, saveToLocalStorage } from "../../../data/cart.js";
 
 
     let productsHTML = '';
@@ -63,8 +63,9 @@
     function updateCartQuantity(){
         const cartQuantity = calculateCartQuantity();
         document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
-
+        saveToLocalStorage();
     }
+    updateCartQuantity();
 
     document.querySelectorAll('.js-add-to-cart').forEach((button) => {
         button.addEventListener('click', () => {
@@ -84,4 +85,3 @@
             
         });
     });
-
