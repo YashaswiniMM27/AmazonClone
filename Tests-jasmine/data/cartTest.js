@@ -1,5 +1,6 @@
 import { addToCart, cart, loadFromStorage } from "../../data/cart.js";
 
+//This test-suite is an example of a unit test
 describe('test suite: add to cart', () => {
 
     //Test case --> 1
