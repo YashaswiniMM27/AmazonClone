@@ -131,13 +131,15 @@ document.querySelectorAll('.js-save-quantity').forEach((link) => {
         renderOrderSummary();
         renderPaymentSummary();
 
-        const container = document.querySelector(
-            `.js-cart-item-container-${productId}`
-        );
-        container.classList.remove('is-editing-quantity');
+        const container = document.querySelector(`.js-cart-item-container-${productId}`);
+        if (container) {
+            container.classList.remove('is-editing-quantity');
+        }
 
         const quantityLabel = document.querySelector(`.js-quantity-label-${productId}`);
-        quantityLabel.innerHTML = newQuantity;
+        if (quantityLabel) {
+            quantityLabel.innerHTML = newQuantity;
+        }
         updateCartQuantity();
     });
 });

@@ -1,13 +1,16 @@
-import { renderOrderSummary } from "../Projects/Amazon-clone/Checkout/orderSummary.js";
-import { renderPaymentSummary } from "../Projects/Amazon-clone/Checkout/paymentSummary.js";
+export let cart;
 
-export let cart = JSON.parse(localStorage.getItem('cart')) || [
-    // {
-    // productId:"e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-    // quantity: '2',
-    // deliveryOptionId: '2'
-    // }
-];
+loadFromStorage();
+
+export function loadFromStorage(){
+    cart = JSON.parse(localStorage.getItem('cart')) || [
+        // {
+        // productId:"e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+        // quantity: '2',
+        // deliveryOptionId: '2'
+        // }
+    ];
+}
 
 let cartQuantity = '';
 
@@ -25,7 +28,7 @@ export function calculateCartQuantity(){
 
 export function addToCart(productId){
     const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
-    const quantity = Number(quantitySelector.value);
+    const quantity = quantitySelector ? Number(quantitySelector.value) : 1;
 
     let matchingItem;
     cart.forEach((cartItem) => {
