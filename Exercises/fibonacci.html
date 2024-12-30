@@ -6,11 +6,24 @@
     <title>Document</title>
 </head>
 <body>
+    <p>Fibonacci series from 0 to a given range using for loop</p>
     <input type="number" min="1" id="js-input">
     <button onclick="fibonacci()">Fibonacci</button>
     <div class="js-fibonacci"></div>
 
+    <p>Fibonacci series from 0 to a given range using while loop</p>
+    <input type="number" min="1" id="js-input-while">
+    <button onclick="fibonacciWhile()">Fibonacci</button>
+    <div class="js-fibonacci-while"></div>
+
+    <p>Fibonacci series between the given range</p>
+    <input type="number" min="1" id="js-input1">
+    <input type="number" min="1" id="js-input2">
+    <button onclick="fibonacciWhile()">Fibonacci</button>
+    <div class="js-fibonacci-range"></div>
+
     <script>
+        //Using for loop
         function fibonacci(){
             let result = [];
             const inputElement = document.getElementById('js-input');
@@ -31,6 +44,58 @@
             }
             document.querySelector('.js-fibonacci').innerHTML = result;
         }
+
+        //Using while loop
+        function fibonacciWhile(){
+            let result = [];
+            const inputElement = document.getElementById('js-input-while');
+            const inputValue = inputElement.value;
+            if(inputValue <= 0){
+                alert('The given range should be greater than 0!')
+            }
+            let i = 0;
+            while(i < inputValue){
+                if(i === 0){
+                    result.push(0);
+                }else
+                if(i === 1){
+                    result.push(1);
+                }else
+                {
+                    result.push(result[i-1] + result[i-2]);
+                }
+                i++;
+            }
+            console.log(result);
+            document.querySelector('.js-fibonacci-while').innerHTML = result;
+        }
+
+        //Display range of series
+        function fibonacciRange(){
+            let result = [];
+            const inputElement1 = document.getElementById('js-input1');
+            const inputElement2 = document.getElementById('js-input2');
+            let inputValue1 = inputElement1.value;
+            let inputValue2 = inputElement2.value;
+            if(inputValue1 <= 0 || inputValue2 <= 0){
+                alert('The given range should be greater than 0!')
+            }
+            for(i = 0; i < inputValue2; i++){
+                if(i === 0){
+                    result.push(0);
+                }else
+                if(i === 1){
+                    result.push(1);
+                }else
+                {
+                    result.push(result[i-1] + result[i-2]);
+                }
+        }
+
+        document.querySelector('.js-fibonacci-range').innerHTML = result.slice(inputValue1, inputValue2);
+        
+        
+    }
     </script>
 </body>
 </html>
