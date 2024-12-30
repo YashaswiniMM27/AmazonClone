@@ -1,6 +1,10 @@
     import { products } from "../../../data/products.js";
     import { addToCart, calculateCartQuantity, saveToLocalStorage } from "../../../data/cart.js";
 
+    // loadProducts(renderProductsPage);
+    renderProductsPage();
+
+    export function renderProductsPage(){
 
     let productsHTML = '';
 
@@ -87,3 +91,4 @@
             
         });
     });
+}
