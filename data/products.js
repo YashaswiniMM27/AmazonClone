@@ -53,6 +53,44 @@ extraInfoHTML(){
 }
 }
 
+//Loading products through a json file from local
+
+export let products = [];
+
+export function loadProducts(){
+
+  const promise = fetch(
+    "/backend/products.json"
+
+  ).then((response) => {
+    return response.json();
+
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+              if(productDetails.type === 'clothing'){
+                return new Clothing(productDetails);
+              }
+              return new Product(productDetails);
+            });
+            return products;
+  });
+
+  return promise;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+//Loading products through a XML Http request (Backend)
+
 //export let products = [];
 
 // export function loadProducts(func){
@@ -75,6 +113,7 @@ extraInfoHTML(){
 //   xhr.send();
 // }
 
+/*
 export const products = [
     {
       id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -740,4 +779,5 @@ export const products = [
   }
   return new Product(productDetails);
 });
+*/
 
