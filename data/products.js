@@ -84,11 +84,6 @@ export function loadProducts(){
 
 
 
-
-
-
-
-
 //Loading products through a XML Http request (Backend)
 
 //export let products = [];
@@ -112,6 +107,8 @@ export function loadProducts(){
 //   xhr.open('GET', 'https://supersimplebackend.dev/products');
 //   xhr.send();
 // }
+
+
 
 /*
 export const products = [

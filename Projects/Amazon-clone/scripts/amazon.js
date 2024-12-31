@@ -1,9 +1,12 @@
     import { products, loadProducts } from "../../../data/products.js";
     import { addToCart, calculateCartQuantity, saveToLocalStorage } from "../../../data/cart.js";
 
-        loadProducts().then(() => {
+        async function loadProductPage(){
+            await loadProducts();
             renderProductsPage();
-        });
+        }
+
+        loadProductPage();
 
 
     export function renderProductsPage(){
